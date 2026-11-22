@@ -38,7 +38,7 @@ Kolom yang masih `""` akan tampil sebagai “Belum diisi”. Untuk dasar hukum, 
 
 ## Versi PDF
 
-`Materi-LDK-Karang-Taruna-Kalisari.pdf` adalah versi cetak (A4) dari halaman ini untuk dibagikan. Isinya sama dengan web, ditambah tabel pengurus per RW, daftar seluruh Ketua RT, dan kunci jawaban kuis di halaman terakhir.
+`Materi-LDK-Karang-Taruna-Kalisari.pdf` adalah versi cetak (A4) dari halaman ini untuk dibagikan. Isinya sama dengan web, ditambah tabel pengurus per RW dan daftar seluruh Ketua RT. Bagian yang hanya ada di web dan tidak ikut dicetak: Sekretaris Kelurahan, Pendamping sosial (TKSK), dan kuis Cek pemahaman. Penandanya class `screen-only`.
 
 Setelah mengubah `data.js`, buat ulang PDF-nya dari folder ini:
 

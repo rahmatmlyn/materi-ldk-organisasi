@@ -3,14 +3,17 @@
    Membuat blok .print-only yang hanya tampil saat halaman dicetak
    (lihat assets/css/cetak.css). Bagian interaktif (lambang, panel peta,
    kuis) diganti versi statis di sini. Dimuat setelah app.js karena
-   memakai DATA, UNSUR, WARNA, KUIS, esc, dan nm.
+   memakai DATA, UNSUR, WARNA, esc, dan nm. Bagian .screen-only
+   (misalnya kuis) tidak dicetak dan tidak masuk daftar isi.
    ========================================================= */
 (() => {
   const tanggal = new Date().toLocaleDateString("id-ID", {day:"numeric", month:"long", year:"numeric"});
   const sisipSetelah = (el, html) => el.insertAdjacentHTML("afterend", `<div class="print-only">${html}</div>`);
 
   /* ---------- Sampul: daftar isi dan tanggal data ---------- */
-  const isi = [...document.querySelectorAll(".nav a")].map(a => {
+  const isi = [...document.querySelectorAll(".nav a")]
+    .filter(a => !document.querySelector(a.getAttribute("href")).classList.contains("screen-only"))
+    .map(a => {
     const [no, ...judul] = a.textContent.split(" ");
     return `<li><span>${esc(no)}</span>${esc(judul.join(" "))}</li>`;
   }).join("");
@@ -48,12 +51,4 @@
       <h4>RW ${k} <span>${r.rt.length} RT</span></h4>${r.catatan ? `<p class="catat">${esc(r.catatan)}</p>` : ""}
       <ol>${r.rt.map((n, i) => `<li><span>RT ${nomorRT(i)}</span>${esc(n)}</li>`).join("")}</ol></div>`; }).join("")}
     </div>`);
-
-  /* ---------- VIII Kuis dan kunci jawaban ---------- */
-  const huruf = "abcd";
-  sisipSetelah(document.getElementById("kuisBox"),
-    `<ol class="kuis-cetak">${KUIS.map(q =>
-      `<li><p>${q.q}</p><ol type="a">${q.o.map(o => `<li>${o}</li>`).join("")}</ol></li>`).join("")}</ol>
-    <div class="kunci"><h3>Kunci jawaban</h3><ol>${KUIS.map(q =>
-      `<li><b>${huruf[q.a]}. ${q.o[q.a]}</b>. ${q.e}</li>`).join("")}</ol></div>`);
 })();

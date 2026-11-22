@@ -1,7 +1,7 @@
 const SVGNS = "http://www.w3.org/2000/svg";
 const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
-const nm = v => v && v.trim() ? esc(v) : '<span class="kosong">Belum diisi</span>';
-const ini = v => v && v.trim() ? v.trim().split(/\s+/).filter(w=>/^[A-Za-z]/.test(w)).slice(0,2).map(w=>w[0]).join("").toUpperCase() : "?";
+const nm = v => v === null ? '<span class="kosong">Tidak ada</span>' : v && v.trim() ? esc(v) : '<span class="kosong">Belum diisi</span>';
+const ini = v => v === null ? "–" : v && v.trim() ? v.trim().split(/\s+/).filter(w=>/^[A-Za-z]/.test(w)).slice(0,2).map(w=>w[0]).join("").toUpperCase() : "?";
 function person(role, val, desc, cls){
   return `<li><div class="av ${cls||""}" aria-hidden="true">${ini(val)}</div><div><div class="role">${role}</div><div class="name">${nm(val)}</div>${desc?`<div class="desc">${desc}</div>`:""}</div></li>`;
 }
@@ -93,7 +93,7 @@ drawMap(svgKal, GEO.kal, GEO.kalOutline, k=>({main:"RW "+k, sub:noUnit(k)?"belum
 Object.keys(DATA.rw).sort().forEach(k=>{const b=document.createElement("button"); b.textContent=k; b.setAttribute("aria-pressed","false"); b.setAttribute("aria-label","RW "+k); b.addEventListener("click",()=>showKal(k)); chips.appendChild(b);});
 function filled(){
   const vals=[DATA.kecamatan.ketuaKartar,DATA.kecamatan.tksk,...Object.values(DATA.kalisari),...Object.values(DATA.kelurahan).map(x=>x.ketuaKartar),...Object.values(DATA.rw).flatMap(r=>r.adaUnit===false?[r.ketuaRW,r.lmk]:[r.ketuaRW,r.lmk,r.ketuaKartar])];
-  return [vals.filter(v=>v&&v.trim()).length, vals.length];
+  const ada=vals.filter(v=>v!==null); return [ada.filter(v=>v&&v.trim()).length, ada.length];
 }
 function showKal(k){
   markSel(svgKal,k);

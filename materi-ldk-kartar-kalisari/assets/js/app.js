@@ -2,8 +2,8 @@ const SVGNS = "http://www.w3.org/2000/svg";
 const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const nm = v => v === null ? '<span class="kosong">Tidak ada</span>' : v && v.trim() ? esc(v) : '<span class="kosong">Belum diisi</span>';
 const ini = v => v === null ? "–" : v && v.trim() ? v.trim().split(/\s+/).filter(w=>/^[A-Za-z]/.test(w)).slice(0,2).map(w=>w[0]).join("").toUpperCase() : "?";
-function person(role, val, desc, cls){
-  return `<li><div class="av ${cls||""}" aria-hidden="true">${ini(val)}</div><div><div class="role">${role}</div><div class="name">${nm(val)}</div>${desc?`<div class="desc">${desc}</div>`:""}</div></li>`;
+function person(role, val, desc, cls, liCls){
+  return `<li${liCls?` class="${liCls}"`:""}><div class="av ${cls||""}" aria-hidden="true">${ini(val)}</div><div><div class="role">${role}</div><div class="name">${nm(val)}</div>${desc?`<div class="desc">${desc}</div>`:""}</div></li>`;
 }
 
 /* ---------- Lambang ---------- */
@@ -121,7 +121,7 @@ const K=DATA.kalisari;
 const GRUP=[
   ["Pemerintah Kelurahan Kalisari",[
     ["Lurah Kalisari",K.lurah,"Pimpinan pemerintahan kelurahan dan pembina Karang Taruna di tingkat kelurahan.","m"],
-    ["Sekretaris Kelurahan",K.sekel,"Membantu lurah dalam administrasi dan koordinasi kegiatan kelurahan.",""],
+    ["Sekretaris Kelurahan",K.sekel,"Membantu lurah dalam administrasi dan koordinasi kegiatan kelurahan.","","screen-only"],
     ["Kasi Kesra Kelurahan Kalisari",K.kasiKesra,"Kepala Seksi Kesejahteraan Rakyat. Membidangi urusan sosial di kelurahan dan menjadi penghubung kegiatan Karang Taruna dengan kelurahan.","m"]]],
   ["Karang Taruna",[
     ["Ketua Karang Taruna Kelurahan Kalisari",DATA.kelurahan.kalisari.ketuaKartar,"Memimpin Karang Taruna Kalisari dan mengoordinasikan Karang Taruna Unit di setiap RW.","k"],
@@ -130,9 +130,9 @@ const GRUP=[
     ["Ketua LMK Kelurahan Kalisari",K.ketuaLMK,"Lembaga Musyawarah Kelurahan, menampung aspirasi warga dari setiap RW.",""],
     ["Ketua TP PKK Kelurahan Kalisari",K.ketuaPKK,"Mitra kegiatan sosial kemasyarakatan, misalnya kegiatan keluarga dan posyandu.",""]]],
   ["Pendamping sosial",[
-    ["TKSK Kecamatan Pasar Rebo",DATA.kecamatan.tksk,"Tenaga Kesejahteraan Sosial Kecamatan, pendamping kegiatan kesejahteraan sosial di wilayah kecamatan.",""]]]
+    ["TKSK Kecamatan Pasar Rebo",DATA.kecamatan.tksk,"Tenaga Kesejahteraan Sosial Kecamatan, pendamping kegiatan kesejahteraan sosial di wilayah kecamatan.",""]],"screen-only"]
 ];
-document.getElementById("shKal").innerHTML=GRUP.map(([g,ps])=>`<div class="grp"><h4>${g}</h4><ul class="people">${ps.map(x=>person(...x)).join("")}</ul></div>`).join("");
+document.getElementById("shKal").innerHTML=GRUP.map(([g,ps,gCls])=>`<div class="grp${gCls?" "+gCls:""}"><h4>${g}</h4><ul class="people">${ps.map(x=>person(...x)).join("")}</ul></div>`).join("");
 
 document.getElementById("hukumList").innerHTML=DATA.dasarHukum.map(h=>`<div><b>${h.nomor&&h.nomor.trim()?esc(h.jenis+" "+h.nomor):`${esc(h.jenis)}<br><span class="kosong">Nomor &amp; tahun belum diisi</span>`}</b><span>tentang ${esc(h.tentang)}</span></div>`).join("");
 

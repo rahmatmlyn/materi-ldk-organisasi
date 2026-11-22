@@ -19,7 +19,7 @@
   html{-webkit-print-color-adjust:exact;print-color-adjust:exact}
   body{background:#fff;font-size:10.5pt;line-height:1.5}
   body::before{display:none}
-  .nav,.screen-only,.lambang,.panel,.chips,#kuisBox,.skor{display:none!important}
+  .nav,.screen-only,.lambang,.panel,.chips{display:none!important}
   main{max-width:none;padding:0}
 
   /* ---------- Sampul ---------- */
@@ -42,8 +42,8 @@
   .sec h3,.sec h3[style]{font-size:13pt!important;margin:16px 0 6px!important}
   h2,h3,h4{break-after:avoid}
   .lede{font-size:12.5pt}
-  #pasarrebo,#kalisari,#kuis{break-before:page}
-  .tl li,.fungsi li,.hukum div,.batas div,.grp,.kartu,.jenjang .lv,.people li,tr,.rt-rw,.kuis-cetak>li,.map-wrap{break-inside:avoid}
+  #pasarrebo,#kalisari{break-before:page}
+  .tl li,.fungsi li,.hukum div,.batas div,.grp,.kartu,.jenjang .lv,.people li,tr,.rt-rw,.map-wrap{break-inside:avoid}
   .batas,.jenjang,.tbl{break-inside:avoid}
   .tl li{padding-bottom:12px}
   .fungsi{gap:8px}
@@ -96,14 +96,6 @@
   .kartu .swatch div{min-height:0;padding:6px 10px;flex:1 1 100%;border-radius:8px;font-size:9.5pt}
   .kartu .swatch b{font-size:10.5pt}
 
-  /* ---------- Kuis ---------- */
-  .kuis-cetak{margin:0;padding-left:20px}
-  .kuis-cetak>li{margin-bottom:10px}
-  .kuis-cetak p{margin:0 0 2px;font-weight:700}
-  .kuis-cetak ol{margin:0;padding-left:20px}
-  .kunci{break-before:page}
-  .kunci ol{padding-left:20px}
-  .kunci li{margin-bottom:6px}
 
   footer{max-width:none;padding:14px 0 0;font-size:9pt}
 }

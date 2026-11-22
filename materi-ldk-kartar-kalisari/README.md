@@ -10,12 +10,15 @@ Isi: pengertian, sejarah, tujuan dan fungsi, makna lambang, dasar hukum, peta Ka
 materi-ldk-kartar-kalisari/
 ├── index.html            Halaman utama
 ├── vercel.json           Pengaturan hosting Vercel
+├── Materi-LDK-Karang-Taruna-Kalisari.pdf   Versi PDF untuk dibagikan
 ├── assets/
 │   ├── css/style.css     Tampilan
+│   ├── css/cetak.css     Tampilan versi cetak/PDF
 │   └── js/
 │       ├── data.js       DATA STAKEHOLDER — ubah nama-nama di sini
 │       ├── geo.js        Bentuk peta (tidak perlu diubah)
-│       └── app.js        Logika interaktif
+│       ├── app.js        Logika interaktif
+│       └── cetak.js      Isi tambahan versi cetak/PDF
 └── README.md
 ```
 
@@ -32,6 +35,19 @@ kalisari: {
 ```
 
 Kolom yang masih `""` akan tampil sebagai “Belum diisi”. Untuk dasar hukum, isi `nomor` dengan nomor dan tahun peraturan, misalnya `"Nomor 10 Tahun 2025"`.
+
+## Versi PDF
+
+`Materi-LDK-Karang-Taruna-Kalisari.pdf` adalah versi cetak (A4) dari halaman ini untuk dibagikan. Isinya sama dengan web, ditambah tabel pengurus per RW, daftar seluruh Ketua RT, dan kunci jawaban kuis di halaman terakhir.
+
+Setelah mengubah `data.js`, buat ulang PDF-nya dari folder ini:
+
+```bash
+"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --headless --no-pdf-header-footer \
+  --virtual-time-budget=15000 --print-to-pdf=Materi-LDK-Karang-Taruna-Kalisari.pdf "file://$PWD/index.html"
+```
+
+Bisa juga dengan membuka halaman di Chrome lalu **Cetak → Simpan sebagai PDF** (ukuran A4, centang *Grafik latar belakang*). Tampilan cetak diatur oleh `assets/css/cetak.css` dan `assets/js/cetak.js`.
 
 ## Mencoba di komputer
 

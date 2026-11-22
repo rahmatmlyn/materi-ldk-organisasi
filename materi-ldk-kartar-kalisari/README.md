@@ -12,6 +12,7 @@ materi-ldk-kartar-kalisari/
 ├── vercel.json           Pengaturan hosting Vercel
 ├── Materi-LDK-Karang-Taruna-Kalisari.pdf   Versi PDF untuk dibagikan
 ├── assets/
+│   ├── img/logo-karang-taruna.png   Lambang Karang Taruna (versi cetak)
 │   ├── css/style.css     Tampilan
 │   ├── css/cetak.css     Tampilan versi cetak/PDF
 │   └── js/
@@ -70,7 +71,7 @@ Setiap kali ada perubahan yang di-push ke GitHub, Vercel akan memperbarui situs 
 
 ## Sumber data
 
-- Materi umum: slide materi Karang Taruna.
+- Materi umum, lambang Karang Taruna (`assets/img/logo-karang-taruna.png`), dan lirik Mars Karang Taruna (ciptaan Gunadi Said): slide materi Karang Taruna.
 - Ketua RW dan RT: Data RT dan RW Tahun 2025, Kelurahan Kalisari.
 - Batas wilayah dan bentuk peta: situs resmi Kelurahan Kalisari (timur.jakarta.go.id).
 - Pembagian RW di peta Kalisari masih perkiraan sampai peta batas RW resmi tersedia.

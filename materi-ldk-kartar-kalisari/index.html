@@ -10,6 +10,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/style.css">
+<link rel="stylesheet" href="assets/css/cetak.css">
 </head>
 <body>
 <header class="nav">
@@ -89,7 +90,7 @@
     <div class="num">IV</div>
     <div>
       <h2>Makna lambang</h2>
-      <p class="prose muted" style="margin-top:0">Lambang Karang Taruna: sekuntum bunga teratai yang mulai mekar, dua helai pita di atas dan bawah, sebuah lingkaran, dengan bunga teratai mekar sebagai latar. Pilih tiap unsur untuk melihat maknanya.</p>
+      <p class="prose muted" style="margin-top:0">Lambang Karang Taruna: sekuntum bunga teratai yang mulai mekar, dua helai pita di atas dan bawah, sebuah lingkaran, dengan bunga teratai mekar sebagai latar.<span class="screen-only"> Pilih tiap unsur untuk melihat maknanya.</span></p>
       <div class="lambang">
         <ul class="unsur" role="tablist" aria-label="Unsur lambang" id="unsurList"></ul>
         <div class="detail" id="unsurDetail" role="tabpanel" aria-live="polite"></div>
@@ -123,7 +124,7 @@
           <div class="map-wrap">
             <svg viewBox="0 0 456 781" role="group" aria-label="Denah kelurahan di Kecamatan Pasar Rebo" id="mapPR"></svg>
           </div>
-          <p class="map-note">Bentuk wilayah ditelusuri dari peta di situs resmi Kelurahan Kalisari (timur.jakarta.go.id). Pilih kelurahan untuk melihat ketua Karang Tarunanya.</p>
+          <p class="map-note">Bentuk wilayah ditelusuri dari peta di situs resmi Kelurahan Kalisari (timur.jakarta.go.id).<span class="screen-only"> Pilih kelurahan untuk melihat ketua Karang Tarunanya.</span></p>
         </div>
         <aside class="panel" id="panelPR" aria-live="polite"></aside>
       </div>
@@ -172,5 +173,6 @@
 <script src="assets/js/data.js"></script>
 <script src="assets/js/geo.js"></script>
 <script src="assets/js/app.js"></script>
+<script src="assets/js/cetak.js"></script>
 </body>
 </html>

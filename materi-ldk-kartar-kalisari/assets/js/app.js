@@ -10,23 +10,24 @@ function person(role, val, desc, cls){
 const UNSUR = [
   {t:"Bunga teratai mulai mekar", h:`<p>Melambangkan unsur remaja yang dijiwai semangat kemasyarakatan (sosial).</p>`},
   {t:"Empat daun bagian bawah", h:`<p>Melambangkan empat fungsi Karang Taruna:</p><ol><li>Memupuk kreativitas untuk belajar bertanggung jawab.</li><li>Membina kegiatan sosial, rekreatif, edukatif, ekonomis produktif, dan kegiatan praktis lainnya.</li><li>Mengembangkan harapan dan cita-cita anak dan remaja melalui bimbingan individual maupun kelompok.</li><li>Menanamkan penghayatan dan pengamalan Pancasila.</li></ol>`},
-  {t:"Tujuh daun bagian atas", h:`<p>Melambangkan tujuh unsur kepribadian yang harus dimiliki anak dan remaja. Ketuk tiap kata untuk melihat artinya.</p>`, tiles:[
+  {t:"Tujuh daun bagian atas", h:`<p>Melambangkan tujuh unsur kepribadian yang harus dimiliki anak dan remaja.</p>`, tiles:[
     ["Taat","Takwa kepada Tuhan Yang Maha Esa"],["Tanggap","Penuh perhatian dan peka terhadap masalah"],["Tanggon","Kuat, daya tahan fisik dan mental"],["Tandas","Tegas, pasti, tidak ragu, teguh pendirian"],["Tangkas","Sigap, gesit, cepat bergerak, dinamis"],["Trampil","Mampu berkreasi dan berkarya praktis"],["Tulus","Sederhana, ikhlas, rela memberi, jujur"]]},
   {t:"Pita bawah: Karang Taruna", h:`<p>Karang = pekarangan, halaman, atau tempat. Taruna = remaja.</p><p>Secara keseluruhan berarti <b>tempat atau wadah pembinaan remaja</b>.</p>`},
-  {t:"Pita atas: Aditya Karya Mahatva Yodha", h:`<p>Ketuk tiap kata untuk melihat artinya.</p>`, after:`<p style="margin-top:16px">Secara keseluruhan berarti <b>pejuang yang berkepribadian, berpengetahuan, dan terampil</b>.</p>`, tiles:[
+  {t:"Pita atas: Aditya Karya Mahatva Yodha", h:``, after:`<p style="margin-top:16px">Secara keseluruhan berarti <b>pejuang yang berkepribadian, berpengetahuan, dan terampil</b>.</p>`, tiles:[
     ["Aditya","Cerdas, penuh pengalaman"],["Karya","Pekerjaan"],["Mahatva","Terhormat, berbudi luhur"],["Yodha","Pejuang, patriot"]]},
   {t:"Lingkaran", h:`<p>Melambangkan sebuah tameng, sebagai lambang <b>Ketahanan Nasional</b>.</p>`},
   {t:"Teratai mekar lima daun", h:`<p>Melambangkan lingkungan kehidupan masyarakat yang sejahtera merata berlandaskan Pancasila.</p>`},
   {t:"Arti warna", h:``, warna:true}
 ];
+const WARNA = `<div class="swatch"><div class="sw-putih"><b>Putih</b>Kesucian, tidak tercela, tidak ternoda</div><div class="sw-merah"><b>Merah</b>Keberanian, sabar, tenang, dapat mengendalikan diri, tekad pantang mundur</div><div class="sw-kuning"><b>Kuning</b>Keagungan atas keluhuran budi pekerti</div></div>`;
 const ul = document.getElementById("unsurList"), det = document.getElementById("unsurDetail");
 function showUnsur(i){
   [...ul.querySelectorAll("button")].forEach((b,j)=>{b.setAttribute("aria-selected", j===i); b.tabIndex = j===i?0:-1;});
   const u = UNSUR[i];
   let html = `<h3>${u.t}</h3>${u.h}`;
-  if(u.tiles){ html += `<div class="tiles">${u.tiles.map(([w,a])=>`<button class="tile" aria-expanded="false"><strong>${w}</strong><span class="hint">Ketuk untuk arti</span><span class="hid">${a}</span></button>`).join("")}</div>`; }
+  if(u.tiles){ html += `<p class="hint-line">Ketuk tiap kata untuk melihat artinya.</p><div class="tiles">${u.tiles.map(([w,a])=>`<button class="tile" aria-expanded="false"><strong>${w}</strong><span class="hint">Ketuk untuk arti</span><span class="hid">${a}</span></button>`).join("")}</div>`; }
   if(u.after) html += u.after;
-  if(u.warna){ html += `<div class="swatch"><div class="sw-putih"><b>Putih</b>Kesucian, tidak tercela, tidak ternoda</div><div class="sw-merah"><b>Merah</b>Keberanian, sabar, tenang, dapat mengendalikan diri, tekad pantang mundur</div><div class="sw-kuning"><b>Kuning</b>Keagungan atas keluhuran budi pekerti</div></div>`; }
+  if(u.warna) html += WARNA;
   det.innerHTML = html;
   det.querySelectorAll(".tile").forEach(t=>t.addEventListener("click",()=>t.setAttribute("aria-expanded", t.getAttribute("aria-expanded")!=="true")));
 }
